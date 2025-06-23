@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Image Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .custom-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5rem;
+        color: #fceaff;
+        text-align: center;
+        margin-top: 20px;
+        letter-spacing: 2px;
+      }
+      #scrollTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 12px 16px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background 0.3s ease;
+      }
+
+      #scrollTopBtn:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="custom-title">🌍 The World Through Different Eyes</h1>
+
+    <div class="filters">
+      <button onclick="filterGallery('all')">🌟 Show All</button>
+      <button onclick="filterGallery('nature')">🌲 Nature's Eye</button>
+      <button onclick="filterGallery('urban')">🏙️ Urban Gaze</button>
+      <button onclick="filterGallery('soul')">🧘 Soul & Silence</button>
+      <button onclick="filterGallery('culture')">🎭 Cultural Colors</button>
+      <button onclick="filterGallery('tech')">🤖 The Tech View</button>
+    </div>
+
+    <div class="gallery-container">
+      <!-- Nature's Eye -->
+      <div class="gallery-item tall" data-category="nature">
+        <img src="images/nature1.jpg" />
+        <div class="overlay-text">Nature 1</div>
+      </div>
+      <div class="gallery-item wide" data-category="nature">
+        <img src="images/nature2.jpg" />
+        <div class="overlay-text">Nature 2</div>
+      </div>
+      <div class="gallery-item" data-category="nature">
+        <img src="images/nature3.jpg" />
+        <div class="overlay-text">Nature 3</div>
+      </div>
+      <div class="gallery-item tall" data-category="nature">
+        <img src="images/nature4.jpg" />
+        <div class="overlay-text">Nature 4</div>
+      </div>
+      <div class="gallery-item wide" data-category="nature">
+        <img src="images/nature5.jpg" />
+        <div class="overlay-text">Nature 5</div>
+      </div>
+      <div class="gallery-item" data-category="nature">
+        <img src="images/nature6.jpg" />
+        <div class="overlay-text">Nature 6</div>
+      </div>
+
+      <!-- Urban Gaze -->
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban1.jpg" />
+        <div class="overlay-text">Urban 1</div>
+      </div>
+      <div class="gallery-item wide" data-category="urban">
+        <img src="images/urban2.jpg" />
+        <div class="overlay-text">Urban 2</div>
+      </div>
+      <div class="gallery-item tall" data-category="urban">
+        <img src="images/urban3.jpg" />
+        <div class="overlay-text">Urban 3</div>
+      </div>
+      <div class="gallery-item" data-category="urban">
+        <img src="images/urban4.jpg" />
+        <div class="overlay-text">Urban 4</div>
+      </div>
+      <div class="gallery-item tall" data-category="urban">
+        <img src="images/urban5.jpg" />
+        <div class="overlay-text">Urban 5</div>
+      </div>
+      <div class="gallery-item wide" data-category="urban">
+        <img src="images/urban6.jpg" />
+        <div class="overlay-text">Urban 6</div>
+      </div>
+
+      <!-- Soul & Silence -->
+      <div class="gallery-item wide" data-category="soul">
+        <img src="images/soul1.jpg" />
+        <div class="overlay-text">Soul 1</div>
+      </div>
+      <div class="gallery-item" data-category="soul">
+        <img src="images/soul2.jpg" />
+        <div class="overlay-text">Soul 2</div>
+      </div>
+      <div class="gallery-item tall" data-category="soul">
+        <img src="images/soul3.jpg" />
+        <div class="overlay-text">Soul 3</div>
+      </div>
+      <div class="gallery-item" data-category="soul">
+        <img src="images/soul4.jpg" />
+        <div class="overlay-text">Soul 4</div>
+      </div>
+      <div class="gallery-item wide" data-category="soul">
+        <img src="images/soul5.jpg" />
+        <div class="overlay-text">Soul 5</div>
+      </div>
+      <div class="gallery-item" data-category="soul">
+        <img src="images/soul6.jpg" />
+        <div class="overlay-text">Soul 6</div>
+      </div>
+
+      <!-- Cultural Colors -->
+      <div class="gallery-item" data-category="culture">
+        <img src="images/culture1.jpg" />
+        <div class="overlay-text">Culture 1</div>
+      </div>
+      <div class="gallery-item wide" data-category="culture">
+        <img src="images/culture2.jpg" />
+        <div class="overlay-text">Culture 2</div>
+      </div>
+      <div class="gallery-item" data-category="culture">
+        <img src="images/culture3.jpg" />
+        <div class="overlay-text">Culture 3</div>
+      </div>
+      <div class="gallery-item tall" data-category="culture">
+        <img src="images/culture4.jpg" />
+        <div class="overlay-text">Culture 4</div>
+      </div>
+      <div class="gallery-item wide" data-category="culture">
+        <img src="images/culture5.jpg" />
+        <div class="overlay-text">Culture 5</div>
+      </div>
+      <div class="gallery-item" data-category="culture">
+        <img src="images/culture6.jpg" />
+        <div class="overlay-text">Culture 6</div>
+      </div>
+
+      <!-- The Tech View -->
+      <div class="gallery-item" data-category="tech">
+        <img src="images/tech1.jpg" />
+        <div class="overlay-text">Tech 1</div>
+      </div>
+      <div class="gallery-item tall" data-category="tech">
+        <img src="images/tech2.jpg" />
+        <div class="overlay-text">Tech 2</div>
+      </div>
+      <div class="gallery-item wide" data-category="tech">
+        <img src="images/tech3.jpg" />
+        <div class="overlay-text">Tech 3</div>
+      </div>
+      <div class="gallery-item" data-category="tech">
+        <img src="images/tech4.jpg" />
+        <div class="overlay-text">Tech 4</div>
+      </div>
+      <div class="gallery-item tall" data-category="tech">
+        <img src="images/tech5.jpg" />
+        <div class="overlay-text">Tech 5</div>
+      </div>
+      <div class="gallery-item wide" data-category="tech">
+        <img src="images/tech6.jpg" />
+        <div class="overlay-text">Tech 6</div>
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      window.onload = () => {
+        // Scroll-to-top functionality
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.addEventListener("scroll", () => {
+          scrollTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+        });
+        scrollTopBtn.onclick = () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        // Lightbox functionality
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const galleryItems = document.querySelectorAll(".gallery-item img");
+        const closeBtn = document.querySelector(".close");
+        const nextBtn = document.getElementById("next");
+        const prevBtn = document.getElementById("prev");
+
+        let currentIndex = 0;
+
+        galleryItems.forEach((img, index) => {
+          img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+            currentIndex = index;
+          });
+        });
+
+        closeBtn.onclick = () => (lightbox.style.display = "none");
+
+        nextBtn.onclick = () => {
+          currentIndex = (currentIndex + 1) % galleryItems.length;
+          lightboxImg.src = galleryItems[currentIndex].src;
+        };
+
+        prevBtn.onclick = () => {
+          currentIndex =
+            (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+          lightboxImg.src = galleryItems[currentIndex].src;
+        };
+
+        document.addEventListener("keydown", (e) => {
+          if (lightbox.style.display === "flex") {
+            if (e.key === "ArrowRight") {
+              currentIndex = (currentIndex + 1) % galleryItems.length;
+              lightboxImg.src = galleryItems[currentIndex].src;
+            } else if (e.key === "ArrowLeft") {
+              currentIndex =
+                (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+              lightboxImg.src = galleryItems[currentIndex].src;
+            } else if (e.key === "Escape") {
+              lightbox.style.display = "none";
+            }
+          }
+        });
+      };
+    </script>
+    <!-- Scroll-to-Top Button -->
+    <button id="scrollTopBtn" title="Go to top">⬆️</button>
+  </body>
+</html>
